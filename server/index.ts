@@ -1,9 +1,12 @@
-import express, { Application } from "express";
-import morgan from "morgan";
+import express, { Application } from 'express';
+import morgan from 'morgan';
 import dotenv from 'dotenv';
+import cors from 'cors';
 import mongoose from 'mongoose';
-import { userController } from "./controllers/userController";
-import { hobbyController } from "./controllers/hobbyController";
+import swaggerUi from 'swagger-ui-express';
+import swaggerJSDoc from 'swagger-jsdoc';
+import usersRouter from './routes/users';
+import hobbiesRouter from './routes/hobbies';
 
 
 // Load environment variables from .env file, where API keys and passwords are configured
@@ -17,24 +20,36 @@ const app: Application = express();
 
 app.use(express.json());
 app.use(morgan("tiny"));
+app.use(cors());
 
 // MongoDB Connection
 mongoose.connect(`${process.env.MONGOURI}`).catch(error => console.error(error));
 mongoose.connection.on('open', () => console.log("Success in connecting to mongodb"));
 
 
-// hobbies Routes
-app.get('/api/v1/users', userController.getUsers);
-app.post('/api/v1/create/user', userController.createUser);
-app.put('/api/v1/update/user/:id', userController.updateUser);
-app.delete('/api/v1/delete/user/:id', userController.deleteUser);
+const options = {
+  definition: {
+    openapi: '3.0.0',
+    info: {
+      title: 'UserHobbies API',
+      version: '1.0.0',
+      description: "A samll UserHobbies app API"
+    },
+    servers: [
+      {
+        url: 'http://localhost:4000/api/v1',
+        description: "Development Server"
+      }
+    ]
+  },
+  apis: ["./routes/*.ts"] // files containing annotations as above
+};
 
-// Hobbies Routes
-app.get('/api/v1/hobbies', hobbyController.getHobbies);
-app.post('/api/v1/:userId/create/hobby', hobbyController.createHobby);
-app.put('/api/v1/update/hobby/:id', hobbyController.updateHobby);
-app.delete('/api/v1/delete/hobby/:id', hobbyController.deleteHobby);
+const openapiSpecification = swaggerJSDoc(options);
 
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
+app.use('/api/v1/users', usersRouter); // Users Routes
+app.use('/api/v1/hobbies', hobbiesRouter); // Hobbies Routes
 
 app.listen(PORT, () => {
   console.log("Server is running on port", PORT);

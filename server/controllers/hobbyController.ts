@@ -14,12 +14,12 @@ export const hobbyController = {
                 let result2 = await User.findByIdAndUpdate({_id: req.params.userId}, {$push: {hobbies: [result1._id]}}).exec();
                 return res.json({
                     data: result1,
-                    message: 'Hobbies created & added successfully',
+                    message: 'Hobby created & added successfully',
                     status: 200
                 })
             } catch(err) {
                 return res.json({
-                    message: 'Hobbies creation failed',
+                    message: 'Hobby creation failed',
                     status: 500
                 });
             }

@@ -86,7 +86,7 @@ export const userController = {
             if(user) {
                 res.json({
                     data: user,
-                    message: 'Task deleted successfully',
+                    message: 'User deleted successfully',
                     status: 200
                 });
             } else {
