@@ -3,7 +3,7 @@ import { User } from '../models/User';
 
 export const hobbyController = {
     createHobby: async (req: any, res: any) => {
-        if(req.body) {
+        if(req.body.name && req.body.passionLevel && req.body.year) {
             const hoddy = new Hobby({
                 name: req.body.name,
                 passionLevel: req.body.passionLevel,
@@ -54,7 +54,7 @@ export const hobbyController = {
         })
     },
     updateHobby: (req: any, res: any) => { 
-        if(req.body) {
+        if(req.body.name && req.body.passionLevel && req.body.year) {
             Hobby.findByIdAndUpdate({ _id: req.params.id }, { name: req.body.name, passionLevel: req.body.passionLevel, year: req.body.year }, {new: true}, (err, hobby) => {
                 if (err) {
                     res.json({

@@ -53,27 +53,27 @@ export const userController = {
     },
     updateUser: (req: any, res: any) => { 
         if(req.body.name) {
-        User.findByIdAndUpdate({_id: req.params.id}, {name: req.body.name}, {new: true}, (err, user) => {
-            if (err) {
-                res.json({
-                    message: 'Server error, Please try after some time.',
-                    status: 500
-                });
-            }
-            if(user) {
-                res.json({
-                    data: user,
-                    message: 'User updated successfully',
-                    status: 200
-                });
-            } else {
-                res.json({
-                    message: 'No data found',
-                    status: 200
-                });
-            }
-        }).populate('hobbies')
-    }
+            User.findByIdAndUpdate({_id: req.params.id}, {name: req.body.name}, {new: true}, (err, user) => {
+                if (err) {
+                    res.json({
+                        message: 'Server error, Please try after some time.',
+                        status: 500
+                    });
+                }
+                if(user) {
+                    res.json({
+                        data: user,
+                        message: 'User updated successfully',
+                        status: 200
+                    });
+                } else {
+                    res.json({
+                        message: 'No data found',
+                        status: 200
+                    });
+                }
+            }).populate('hobbies')
+        }
     },
     deleteUser: (req: any, res: any) => {
         User.deleteOne({id: req.params.id}, (err: any, user: any) => {
