@@ -51,6 +51,4 @@ app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 app.use('/api/v1/users', usersRouter); // Users Routes
 app.use('/api/v1/hobbies', hobbiesRouter); // Hobbies Routes
 
-app.listen(PORT, () => {
-  console.log("Server is running on port", PORT);
-});
+export default app
