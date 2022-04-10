@@ -5,8 +5,8 @@ interface IHobby {
   passionLevel: string;
   name: string;
   year: string;
-  createdAt: Date,
-  modifiedAt: Date
+  createdAt: Date;
+  modifiedAt: Date;
 }
 
 const hobbySchema = new Schema<IHobby>({

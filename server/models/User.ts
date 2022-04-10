@@ -2,10 +2,10 @@ import { Schema, Types, model } from 'mongoose';
 
 // 1. Create an interface representing a document in MongoDB.
 interface IUser {
-    name: string;
-    hobbies: Types.ObjectId;
-    createdAt: Date,
-    modifiedAt: Date
+  name: string;
+  hobbies: Types.ObjectId;
+  createdAt: Date;
+  modifiedAt: Date;
 }
 
 const userSchema = new Schema<IUser>({

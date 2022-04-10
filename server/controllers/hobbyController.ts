@@ -1,8 +1,9 @@
 import { Hobby } from '../models/Hobby';
 import { User } from '../models/User';
+import express from 'express';
 
 export const hobbyController = {
-    createHobby: async (req: any, res: any) => {
+    createHobby: async (req: express.Request, res: express.Response) => {
         if(req.body.name && req.body.passionLevel && req.body.year) {
             const hoddy = new Hobby({
                 name: req.body.name,
@@ -30,7 +31,7 @@ export const hobbyController = {
             });
         }
     },
-    getHobbies: (req: any, res: any) => { 
+    getHobbies: (req: express.Request, res: express.Response) => { 
         Hobby.find({}, (err, hobbies) => {
             if (err) {
                 res.json({
@@ -53,7 +54,7 @@ export const hobbyController = {
             }
         })
     },
-    updateHobby: (req: any, res: any) => { 
+    updateHobby: (req: express.Request, res: express.Response) => { 
         if(req.body.name && req.body.passionLevel && req.body.year) {
             Hobby.findByIdAndUpdate({ _id: req.params.id }, { name: req.body.name, passionLevel: req.body.passionLevel, year: req.body.year }, {new: true}, (err, hobby) => {
                 if (err) {
@@ -77,7 +78,7 @@ export const hobbyController = {
             })
         }
     },
-    deleteHobby: (req: any, res: any) => {
+    deleteHobby: (req: express.Request, res: express.Response) => {
         Hobby.deleteOne({_id: req.params.id}, (err: any, hobby: any) => {
             if (err) {
                 res.json({

@@ -1,7 +1,8 @@
 import { User } from '../models/User';
+import express from 'express';
 
 export const userController = {
-    createUser: (req: any, res: any) => {
+    createUser: (req: express.Request, res: express.Response) => {
         if(req.body.name) {
             const user = new User({
                 name: req.body.name
@@ -27,7 +28,7 @@ export const userController = {
             });
         }
     },
-    getUsers: (req: any, res: any) => {
+    getUsers: (req: express.Request, res: express.Response) => {
         let query = User.find().populate('hobbies');
         query.exec((err, users) => {
             if (err) {
@@ -51,7 +52,7 @@ export const userController = {
         }
         })
     },
-    updateUser: (req: any, res: any) => { 
+    updateUser: (req: express.Request, res: express.Response) => { 
         if(req.body.name) {
             User.findByIdAndUpdate({_id: req.params.id}, {name: req.body.name}, {new: true}, (err, user) => {
                 if (err) {
@@ -75,7 +76,7 @@ export const userController = {
             }).populate('hobbies')
         }
     },
-    deleteUser: (req: any, res: any) => {
+    deleteUser: (req: express.Request, res: express.Response) => {
         console.log(req.params.id);
         User.deleteOne({ _id: req.params.id }, (err: any, user: any) => {
             console.log(user)
