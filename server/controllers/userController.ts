@@ -76,14 +76,16 @@ export const userController = {
         }
     },
     deleteUser: (req: any, res: any) => {
-        User.deleteOne({id: req.params.id}, (err: any, user: any) => {
+        console.log(req.params.id);
+        User.deleteOne({ _id: req.params.id }, (err: any, user: any) => {
+            console.log(user)
             if (err) {
                 res.json({
                     message: 'Server error, Please try after some time.',
                     status: 500
                 });
             }
-            if(user) {
+            if(user.deletedCount > 0) {
                 res.json({
                     data: user,
                     message: 'User deleted successfully',

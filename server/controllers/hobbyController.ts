@@ -78,14 +78,14 @@ export const hobbyController = {
         }
     },
     deleteHobby: (req: any, res: any) => {
-        Hobby.deleteOne({id: req.params.id}, (err: any, hobby: any) => {
+        Hobby.deleteOne({_id: req.params.id}, (err: any, hobby: any) => {
             if (err) {
                 res.json({
                     message: 'Server error, Please try after some time.',
                     status: 500
                 });
             }
-            if(hobby) {
+            if(hobby.deletedCount > 0) {
                 res.json({
                     data: hobby,
                     message: 'Hobby deleted successfully',
