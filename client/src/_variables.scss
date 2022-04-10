@@ -1,0 +1,9 @@
+$primary-color: #000;
+
+@mixin inputBox {
+    flex: 3 0 0;
+    height: 38px;
+    border-radius: 0;
+    padding: 2px 10px;
+    border: 1px solid black;
+}

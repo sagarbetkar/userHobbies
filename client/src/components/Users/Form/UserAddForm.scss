@@ -1,0 +1,20 @@
+.user-form {
+  display: flex;
+  input {
+    flex: 3 0 0;
+    height: 38px;
+    border-radius: 0;
+    padding: 2px 10px;
+    border: 1px solid black;
+  }
+  button {
+    flex: 1 0 0;
+    font-size: 16px;
+    font-weight: 500;
+    border-radius: 0;
+    border: 1px solid black;
+    &:disabled {
+      opacity: 0.3;
+    }
+  }
+}

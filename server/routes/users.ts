@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { userController } from "../controllers/userController";
 
-const usersRouter = Router();
+const usersRouter: Router = Router();
 
 /**
  * @swagger

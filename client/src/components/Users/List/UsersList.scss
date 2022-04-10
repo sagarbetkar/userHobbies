@@ -1,0 +1,25 @@
+.users-list {
+    list-style-type: none;
+    margin:0;
+    height: 194px;
+    padding: 0; 
+    overflow: auto;
+    li {
+        overflow: hidden;
+        padding: 10px 5px;
+        border: 1px solid black
+      }
+      
+      /* li:hover {
+        background: $color-border-light;
+        cursor: pointer;
+      }
+      li.selected {
+        background:$color-border-dark;
+      } */
+      .user-title{
+          text-align: start;
+          margin: 0
+      }
+  }
+ 
