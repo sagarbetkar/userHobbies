@@ -1,3 +1,5 @@
+@import '../../../scss/variables';
+
 table {
   border: solid 1px black;
   border-collapse: collapse;
@@ -5,9 +7,15 @@ table {
   width: 100%;
   overflow: auto;
   tbody tr {
-    td {
       border: solid 1px black;
       padding: 10px;
-    }
+      height: 38px;
+      text-align: center;
+      text-transform: capitalize;
+  }
+  button {
+    background-color: $red;
+    color: $white;
+    border-radius: 4px;
   }
 }

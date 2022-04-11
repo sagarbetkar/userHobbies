@@ -1,4 +1,3 @@
-import React from "react";
 import { Hobby } from "../../../types";
 
 interface IHobbyTableRowProps {
@@ -10,12 +9,12 @@ const HobbyTableRow = ({ hobby, onRemove }: IHobbyTableRowProps) => {
   return (
     <tr>
       <td>
-        {hobby.passionLevel}
+        Passion: {hobby.passionLevel}
       </td>
       <td>
-        {hobby.name}
+        <h3>{hobby.name}</h3>
       </td>
-      <td>{"Since " + hobby.year}</td>
+      <td style={{textAlign: 'end'}}>{"Since " + hobby.year}</td>
       <td>
         <button
           onClick={() =>
@@ -23,7 +22,7 @@ const HobbyTableRow = ({ hobby, onRemove }: IHobbyTableRowProps) => {
             onRemove(hobby)
           }
         >
-          Delete
+          X
         </button>
       </td>
     </tr>

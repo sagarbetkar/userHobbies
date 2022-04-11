@@ -1,0 +1,13 @@
+@import './_variables.scss';
+
+@mixin inputBox() {
+    flex: 3 0 0;
+    height: 38px;
+    border-radius: 0;
+    padding: 2px 10px;
+    @include blackBorder();
+}
+
+@mixin blackBorder() {
+    border: 1px solid $black;
+}

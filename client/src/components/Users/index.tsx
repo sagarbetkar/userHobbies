@@ -1,4 +1,3 @@
-import React from "react";
 import { User } from "../../types";
 import UserAddForm from "./Form/UserAddForm";
 import UsersList from "./List/UsersList";
@@ -26,7 +25,7 @@ export const Users = ({
   };
 
   return (
-    <div>
+    <div style={{overflow: "auto"}}>
       <UserAddForm onAdd={addUser} />
       {users.length === 0 ? (
         "No users"

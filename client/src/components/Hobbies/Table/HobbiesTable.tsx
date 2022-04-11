@@ -17,10 +17,10 @@ const HobbiesTable = ({ hobbies, onRemove }: IHobbiesTableProps) => {
   return (
     <table>
       <colgroup>
-        <col width="25%" />
+        <col width="30%" />
         <col width="45%" />
-        <col width="25%" />
-        <col width="5%" />
+        <col width="15%" />
+        <col width="10%" />
       </colgroup>
       <tbody>
         {hobbies.map(hobby => (

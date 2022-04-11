@@ -1,8 +1,6 @@
-import React from "react";
 import { Hobby } from "../../types";
 import HobbyForm from "./Form/HobbyForm";
 import HobbiesTable from "./Table/HobbiesTable";
-import './Hobbies.scss';
 
 interface HobbiesProps {
   hobbies: Hobby[];
@@ -24,7 +22,7 @@ const Hobbies = ({ hobbies, userId, onAdd, onRemove }: HobbiesProps) => {
   return (
     <>
       <HobbyForm onAdd={addHobby} userId={userId}/>
-      <div className="hobby-list">
+      <div>
         {hobbies.length === 0 ? (
           "No hobbies"
         ) : (

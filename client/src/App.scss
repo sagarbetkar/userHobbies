@@ -1,12 +1,12 @@
-@use '_variables.scss';
+@import './scss/_variables.scss';
 
 .App {
   text-align: left;
   .App-header {
     h2 {
-      border: 1px solid black;
-      padding: 0 40px;
-      margin: 0 40px
+      border: 1px solid $black;
+      padding: 10px 20px;
+      margin: 0;
     }
   }
 }

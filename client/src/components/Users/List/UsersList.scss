@@ -1,24 +1,24 @@
+@import '../../../scss/mixins';
+
 .users-list {
     list-style-type: none;
     margin:0;
-    height: 194px;
     padding: 0; 
-    overflow: auto;
     li {
         overflow: hidden;
         padding: 10px 5px;
-        border: 1px solid black
+        @include blackBorder(); 
       }
       
-      /* li:hover {
-        background: $color-border-light;
+      li:hover {
+        background: #ccc;
         cursor: pointer;
       }
       li.selected {
-        background:$color-border-dark;
-      } */
+        background: #c2c2c2;
+      }
       .user-title{
-          text-align: start;
+          text-align: center;
           margin: 0
       }
   }

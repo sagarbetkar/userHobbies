@@ -7,6 +7,7 @@ import { createHobby, deleteHobby, setHobbies } from "../../features/hobby/hobbi
 import { createUser, fetchUsers } from "../../features/user/usersActions";
 import Hobbies from "../Hobbies";
 import Users from "../Users";
+import Split from 'react-split';
 
 
 export interface IUserHobbiesProps {
@@ -48,25 +49,28 @@ class UserHobbies extends React.Component<IUserHobbiesProps,IUserHobbiesState> {
     const { users, hobbies, removeHobby, addUser } = this.props;
     const { selectedUserId } = this.state;
     return (
-      <div className="user-hobbies-container">
-        <div className="users-column">
-            <Users
+      <Split direction="vertical" style={{ height: "calc(100vh - 4rem)"}}>
+        <Split style={{ display: "flex" }} sizes={[50, 50]} minSize={[300, 600]}>
+          <Users
             users={users}
             selectedUserId={selectedUserId}
             onAdd={addUser}
             selectUser={this.selectUser}
           />
-        </div>
-        <div className="hobbies-column">
-          {selectedUserId && (
-              <Hobbies onRemove={removeHobby}
-              onAdd={this.onAddHobby}
-              userId={selectedUserId}
-              hobbies={hobbies}
-            />
+          {selectedUserId ? (
+            <div style={{overflowX: "hidden"}}>
+                <Hobbies onRemove={removeHobby}
+                onAdd={this.onAddHobby}
+                userId={selectedUserId}
+                hobbies={hobbies}
+              />
+            </div>
+          ) : (
+            <div style={{ backgroundColor: "#ccc" }}></div>
           )}
-        </div>
-      </div>
+        </Split>
+        <div style={{backgroundColor: "#000"}}></div>
+      </Split>
     );
   }
 }

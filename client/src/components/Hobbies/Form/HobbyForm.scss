@@ -1,29 +1,11 @@
+@import '../../../scss/variables';
+
 .hobby-form {
     width: 100%;
-    display: flex;
-    input {
+    input, select {
       flex: 3 0 0;
-      height: 38px;
       border-radius: 0;
-      padding: 2px 10px;
-      border: 1px solid black;
-    }
-    .passion-dropdown {
-      flex: 1 0 0;
-    }
-    .input-hobby {
-      flex: 2 0 0;
-    }
-    .input-year {
-      flex: 1 0 0;
-    }
-  }
-@media screen and (max-width: 600px){
-    input{
-      min-width: 50px;
-    }
-    .hobby-form {
-        display: flex;
-        flex-direction: column;
+      padding: 8px 5px;
+      border: 1px solid $black;
     }
   }
