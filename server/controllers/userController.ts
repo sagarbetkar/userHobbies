@@ -74,10 +74,14 @@ export const userController = {
                     });
                 }
             }).populate('hobbies')
+        } else {
+            res.json({
+              message: 'Incomplete Inputs',
+              status: 200
+            });
         }
     },
     deleteUser: (req: express.Request, res: express.Response) => {
-        console.log(req.params.id);
         User.deleteOne({ _id: req.params.id }, (err: any, user: any) => {
             console.log(user)
             if (err) {
@@ -99,5 +103,5 @@ export const userController = {
                 });
             }
         })
-     }
+    }
 }

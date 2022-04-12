@@ -3,6 +3,8 @@ import request from "supertest";
 
 import app from "../index";
 
+var hobbyId: string;
+
 describe("Hobbies routes", () => {
   test('GET /hobbies', (done) => {
     request(app)
@@ -17,7 +19,7 @@ describe("Hobbies routes", () => {
   })
 
   test('POST /hobbies/:userId', (done) => {
-    const userId = '6251774ebe4e905f105eb983'
+    const userId = '6253ec123288047e4c6c0df7'
     request(app)
       .post(`/api/v1/hobbies/${userId}`)
       .send({
@@ -28,15 +30,15 @@ describe("Hobbies routes", () => {
       .expect(200)
       .end((err, res) => {
         if (err) return done(err)
+        hobbyId = res.body.data._id;
         expect(res.body).toHaveProperty('message', "Hobby created & added successfully")
         return done()
       })
   })
 
   test('PUT /hobbies/:id', (done) => {
-    const id = '62525d37fa3ce7f3fc4c9e08'
     request(app)
-      .put(`/api/v1/hobbies/${id}`)
+      .put(`/api/v1/hobbies/${hobbyId}`)
       .send({
         name: "Cricket",
         passionLevel: "low",
@@ -51,9 +53,8 @@ describe("Hobbies routes", () => {
   })
 
   test('DELETE /hobbies/:id', (done) => {
-    const id = '62525d37fa3ce7f3fc4c9e08'
     request(app)
-      .delete(`/api/v1/hobbies/${id}`)
+      .delete(`/api/v1/hobbies/${hobbyId}`)
       .expect(200)
       .end((err, res) => {
         if (err) return done(err)

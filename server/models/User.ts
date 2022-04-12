@@ -3,7 +3,7 @@ import { Schema, Types, model } from 'mongoose';
 // 1. Create an interface representing a document in MongoDB.
 interface IUser {
   name: string;
-  hobbies: Types.ObjectId;
+  hobbies: [Types.ObjectId];
   createdAt: Date;
   modifiedAt: Date;
 }

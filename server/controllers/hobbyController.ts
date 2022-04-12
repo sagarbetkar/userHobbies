@@ -76,6 +76,11 @@ export const hobbyController = {
                     });
                 }
             })
+        } else {
+            res.json({
+              message: 'Incomplete Inputs',
+              status: 200
+            });
         }
     },
     deleteHobby: (req: express.Request, res: express.Response) => {
