@@ -83,26 +83,20 @@ export const hobbyController = {
             });
         }
     },
-    deleteHobby: (req: express.Request, res: express.Response) => {
-        Hobby.deleteOne({_id: req.params.id}, (err: any, hobby: any) => {
-            if (err) {
-                res.json({
+    deleteHobby: async (req: express.Request, res: express.Response) => {
+        try {
+            let result1 = await Hobby.deleteOne({ _id: req.params.id });
+            let result2 = await User.findByIdAndUpdate({ _id: req.params.userId }, { $pull: { hobbies:  req.params.id  } }, { new: true });
+             return res.json({
+                    data: result1,
+                    message: 'Hobby deleted successfully',
+                    status: 200
+                })
+        } catch (error) {
+            res.json({
                     message: 'Server error, Please try after some time.',
                     status: 500
                 });
-            }
-            if(hobby.deletedCount > 0) {
-                res.json({
-                    data: hobby,
-                    message: 'Hobby deleted successfully',
-                    status: 200
-                });
-            } else {
-                res.json({
-                    message: 'No data found',
-                    status: 200
-                });
-            }
-        })
+        }
     }
 }

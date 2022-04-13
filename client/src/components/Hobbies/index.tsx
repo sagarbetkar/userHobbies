@@ -6,7 +6,7 @@ interface HobbiesProps {
   hobbies: Hobby[];
   userId: string;
   onAdd(hobby: Hobby, userId: string): void;
-  onRemove(id: string): void;
+  onRemove(id: string, userId: string): void;
 }
 
 const Hobbies = ({ hobbies, userId, onAdd, onRemove }: HobbiesProps) => {
@@ -26,7 +26,7 @@ const Hobbies = ({ hobbies, userId, onAdd, onRemove }: HobbiesProps) => {
         {hobbies.length === 0 ? (
           "No hobbies"
         ) : (
-          <HobbiesTable onRemove={onRemove} hobbies={hobbies} />
+          <HobbiesTable onRemove={onRemove} userId={userId} hobbies={hobbies} />
         )}
       </div>
     </>

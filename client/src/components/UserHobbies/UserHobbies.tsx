@@ -82,7 +82,7 @@ const mapStateToProps = (store: any) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => ({
   addUser: (username: string) => dispatch(createUser(username)),
-  removeHobby: (id: string) => dispatch(deleteHobby(id)),
+  removeHobby: (id: string, userId: string) => dispatch(deleteHobby(id, userId)),
   addHobby: (hobby: Hobby, userId: string) => dispatch(createHobby(hobby, userId)),
   fetchUsers: () => dispatch(fetchUsers()),
   fetchHobbies: (hobbies: Hobby[]) => dispatch(setHobbies(hobbies))

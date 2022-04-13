@@ -25,7 +25,7 @@ export const addHobby = (hobby: Hobby): HobbiesActionTypes => ({
   }
 });
 
-export const removeHobby = (id: string): HobbiesActionTypes => ({
+export const removeHobby = (id: string, userId: string): HobbiesActionTypes => ({
   type: DELETE_HOBBY,
   payload: {
     hobbyId: id
@@ -43,9 +43,9 @@ export const createHobby = (hobby: Hobby, userId: string) => ({
   }
 });
 
-export const deleteHobby = (id: string): any => async (
+export const deleteHobby = (id: string, userId:string): any => async (
   dispatch: ThunkDispatch<{}, {}, AnyAction>
 ): Promise<void> => {
-  await axios.delete(`http://localhost:4000/api/v1/hobbies/${id}`);
-  dispatch(removeHobby(id));
+  await axios.delete(`http://localhost:4000/api/v1/hobbies/${userId}/${id}`);
+  dispatch(removeHobby(id, userId));
 };

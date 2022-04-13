@@ -4,6 +4,7 @@ import request from "supertest";
 import app from "../index";
 
 var hobbyId: string;
+const userId = '6255825a503d2bf2a1d079da'
 
 describe("Hobbies routes", () => {
   test('GET /hobbies', (done) => {
@@ -19,7 +20,6 @@ describe("Hobbies routes", () => {
   })
 
   test('POST /hobbies/:userId', (done) => {
-    const userId = '6253ec123288047e4c6c0df7'
     request(app)
       .post(`/api/v1/hobbies/${userId}`)
       .send({
@@ -52,9 +52,9 @@ describe("Hobbies routes", () => {
       })
   })
 
-  test('DELETE /hobbies/:id', (done) => {
+  test('DELETE /hobbies/:userId/:id', (done) => {
     request(app)
-      .delete(`/api/v1/hobbies/${hobbyId}`)
+      .delete(`/api/v1/hobbies/${userId}/${hobbyId}`)
       .expect(200)
       .end((err, res) => {
         if (err) return done(err)

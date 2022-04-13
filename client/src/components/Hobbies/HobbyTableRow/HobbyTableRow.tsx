@@ -2,10 +2,11 @@ import { Hobby } from "../../../types";
 
 interface IHobbyTableRowProps {
   hobby: Hobby;
-  onRemove(hobby: Hobby): void;
+  userId: string;
+  onRemove(hobby: Hobby, userId: string): void;
 }
 
-const HobbyTableRow = ({ hobby, onRemove }: IHobbyTableRowProps) => {
+const HobbyTableRow = ({ hobby, onRemove, userId }: IHobbyTableRowProps) => {
   return (
     <tr>
       <td>
@@ -19,7 +20,7 @@ const HobbyTableRow = ({ hobby, onRemove }: IHobbyTableRowProps) => {
         <button
           onClick={() =>
             window.confirm("Are you sure you wish to delete the hobby?") &&
-            onRemove(hobby)
+            onRemove(hobby, userId)
           }
         >
           X

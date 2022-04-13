@@ -5,13 +5,14 @@ import "./HobbiesTable.scss";
 
 export interface IHobbiesTableProps {
   hobbies: Hobby[];
-  onRemove(id: string): void;
+  userId: string;
+  onRemove(id: string, userId: string): void;
 }
 
-const HobbiesTable = ({ hobbies, onRemove }: IHobbiesTableProps) => {
+const HobbiesTable = ({ hobbies, onRemove, userId }: IHobbiesTableProps) => {
  
-  const removeHobby = (hobby: Hobby) => {
-    onRemove(hobby._id);
+  const removeHobby = (hobby: Hobby, userId:string) => {
+    onRemove(hobby._id, userId);
   };
 
   return (
@@ -24,7 +25,7 @@ const HobbiesTable = ({ hobbies, onRemove }: IHobbiesTableProps) => {
       </colgroup>
       <tbody>
         {hobbies.map(hobby => (
-          <HobbyTableRow key={hobby._id} hobby={hobby} onRemove={removeHobby} />
+          <HobbyTableRow key={hobby._id} hobby={hobby} userId={userId} onRemove={removeHobby} />
         ))}
       </tbody>
     </table>

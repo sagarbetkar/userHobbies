@@ -149,7 +149,7 @@ hobbiesRouter.put('/:id', hobbyController.updateHobby);
  *      500: 
  *        description: Server error, Please try after some time.
  */
-hobbiesRouter.delete('/:id', hobbyController.deleteHobby);
+hobbiesRouter.delete('/:userId/:id', hobbyController.deleteHobby);
 
 
 export default hobbiesRouter;

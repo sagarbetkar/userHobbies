@@ -7,7 +7,7 @@ export const userController = {
             const user = new User({
                 name: req.body.name
             });
-            user.save((err, t) => {
+            user.save((err, user) => {
                 if (err) {
                     return res.json({
                         message: 'User creation failed',
@@ -15,7 +15,7 @@ export const userController = {
                     });
                 } else {
                     res.json({
-                        data: t,
+                        data: user,
                         message: 'User added successfully',
                         status: 200
                     });
